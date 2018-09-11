@@ -1,12 +1,15 @@
+@import './default.less';
+
 .container{
     display: flex;
     .nav-left {
         // vh，是指CSS中相对长度单位，表示相对视口高度（Viewport Height），1vh = 1% * 视口高度。
         height: calc(100vh);
-        background-color: #001529;
+        background-color: @colorR ;
     }
     .main {
         height: calc(100vh);
+        background-color: @colorL ;
     }
     .content {
         position: relative;

@@ -15,7 +15,7 @@ export default class Admin extends PureComponent{
                 <Col span={21} className='main'>
                     <Header/>
                     <Row className='content'>
-                        Content
+                        {this.props.children}
                     </Row>
                     <Footer/>
                 </Col>

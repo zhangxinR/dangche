@@ -1,4 +1,5 @@
 import React,{ PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import MenuConfig from '../../config/menuConfig';
 import { Menu } from 'antd';
 import './index.less';
@@ -33,7 +34,9 @@ export default class NavLeft extends PureComponent{
                     key={ item.key }
                     title={ item.title }
                 >
-                    { item.title }
+                    <Link to={item.key}>
+                        { item.title }
+                    </Link>   
                 </Menu.Item>
             )
         })
