@@ -5,8 +5,14 @@ import Admin from './admin';
 import {
     Login,
     Home,
-    Button,
-    NoMatch
+    Buttons,
+    NoMatch,
+    Modals,
+    Loadings,
+    Notices,
+    Messages,
+    Tabs,
+    Gallery
 } from './pages';
 
 export default class Irouter extends Component{
@@ -19,7 +25,13 @@ export default class Irouter extends Component{
                             <Admin>
                                 <Switch>
                                     <Route path='/admin/home' component={ Home } />
-                                    <Route path='/admin/ui/buttons' component={ Button } />
+                                    <Route path='/admin/ui/buttons' component={ Buttons } />
+                                    <Route path='/admin/ui/modals' component={ Modals } />
+                                    <Route path='/admin/ui/loadings' component={ Loadings } />
+                                    <Route path='/admin/ui/notification' component={ Notices } />
+                                    <Route path='/admin/ui/messages' component={ Messages } />
+                                    <Route path='/admin/ui/tabs' component={ Tabs } />
+                                    <Route path='/admin/ui/gallery' component={ Gallery } />
                                     <Route component={ NoMatch }></Route>
                                 </Switch>
                             </Admin>

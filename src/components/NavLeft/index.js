@@ -47,7 +47,7 @@ export default class NavLeft extends PureComponent{
             <div>
                 <div className='logo'>
                     <img src="/assets/logo-ant.svg" alt="logo"/>
-                    <h1>Imooc MS</h1>
+                    <h1>Welcome</h1>
                 </div>
                 <Menu
                     theme="dark"
