@@ -12,7 +12,10 @@ import {
     Notices,
     Messages,
     Tabs,
-    Gallery
+    Gallery,
+    Carousel,
+    Logins,
+    Regs
 } from './pages';
 
 export default class Irouter extends Component{
@@ -32,6 +35,9 @@ export default class Irouter extends Component{
                                     <Route path='/admin/ui/messages' component={ Messages } />
                                     <Route path='/admin/ui/tabs' component={ Tabs } />
                                     <Route path='/admin/ui/gallery' component={ Gallery } />
+                                    <Route path='/admin/ui/carousel' component={ Carousel } />
+                                    <Route path='/admin/form/login' component={ Logins } />
+                                    <Route path='/admin/form/reg' component={ Regs } />
                                     <Route component={ NoMatch }></Route>
                                 </Switch>
                             </Admin>
