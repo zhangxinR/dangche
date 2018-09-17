@@ -11,12 +11,15 @@ import {
     Switch,
     DatePicker,
     TimePicker,
-    InputNumber
+    InputNumber,
+    Upload,
+    message
 } from 'antd';
 import moment from 'moment';
 
 const FormItem=Form.Item;
 class Regs extends Component{
+    state={}
     render(){
         const { getFieldDecorator } =this.props.form;
         const RadioGroup=Radio.Group;
@@ -30,6 +33,15 @@ class Regs extends Component{
             wrapperCol:{
                 xs:24,
                 sm:12
+            }
+        }
+        const offsetLayout={
+            wrapperCol:{
+                xs:24,
+                sm:{
+                    span:12,
+                    offset:4
+                }
             }
         }
         return (
@@ -63,7 +75,7 @@ class Regs extends Component{
                                         }
                                     ]
                                 })(
-                                    <Input placeholder='请输入密码' />
+                                    <Input type='password' placeholder='请输入密码' />
                                 )
                             }
                         </FormItem>
@@ -84,7 +96,7 @@ class Regs extends Component{
                                 getFieldDecorator('age',{
                                     initialValue:18
                                 })(
-                                   <InputNumber min={1} max={10} ></InputNumber>
+                                   <InputNumber min={1} max={99} ></InputNumber>
                                 )
                             }
                         </FormItem>
@@ -148,15 +160,83 @@ class Regs extends Component{
                                 getFieldDecorator('address',{
                                     initialValue:'北京潘家园美景东方小区'
                                 })(
-                                   <TextArea row={4} />
+                                   <TextArea autosize={
+                                       {
+                                           minRows:4,
+                                           maxRows:6
+                                       }
+                                   } />
                                 )
                             }
+                        </FormItem>
+                        <FormItem label='早起时间' {...formItemLayout}>
+                            {
+                                getFieldDecorator('time',)(
+                                   <TimePicker />
+                                )
+                            }
+                        </FormItem>
+                        <FormItem label='头像' {...formItemLayout}>
+                            {
+                                getFieldDecorator('userImg',)(
+                                    <Upload
+                                        listType='picture-card'
+                                        action="//jsonplaceholder.typicode.com/posts/"
+                                        showUploadList={false}
+                                        onChange={this.handleChange}
+                                    >
+                                        {this.state.imageUrl ? <img src={this.state.imageUrl} alt="avatar" /> : <Icon type='plus' /> }
+                                    </Upload>
+                                )
+                            }
+                        </FormItem>
+                        <FormItem {...offsetLayout}>
+                            {
+                                getFieldDecorator('rules',)(
+                                    <Checkbox>
+                                        我已经阅读过
+                                        <a href="#">注册协议</a>
+                                    </Checkbox>
+                                )
+                            }
+                        </FormItem>
+                        <FormItem {...offsetLayout}>
+                            <Button type='primary' onClick={this.handleSubmit}>注册</Button>
+                            <Button type='danger' onClick={this.handleReset}>重置</Button>
                         </FormItem>
                     </Form>
                 </Card>
             </div>
         )
     }
+
+    getBase64=(img, callback) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(img);
+    }
+    handleChange = (info) => {
+        if (info.file.status === 'uploading') {
+            this.setState({ loading: true });
+            return;
+        }
+        if (info.file.status === 'done') {
+            // Get this url from response in real world.
+            this.getBase64(info.file.originFileObj, imageUrl => this.setState({
+            imageUrl,
+            loading: false,
+            }));
+        }
+    }
+    handleSubmit=()=>{
+        let userInfo = this.props.form.getFieldsValue();
+        message.success('恭喜您，注册成功！');
+        console.log(userInfo);
+    }
+    handleReset=()=>{
+        this.props.form.resetFields();
+    }
+
 }
 
 const RegisterForm=Form.create()(Regs);

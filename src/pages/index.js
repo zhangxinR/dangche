@@ -11,5 +11,6 @@ import Gallery from './ui/gallery';
 import Carousel from './ui/carousel';
 import Logins from './form/login';
 import Regs from './form/reg';
+import BasicTable from './table/basic';
 
-export { Home,Login,Buttons,NoMatch,Modals,Loadings,Notices,Messages,Tabs,Gallery,Carousel,Logins,Regs }
+export { Home,Login,Buttons,NoMatch,Modals,Loadings,Notices,Messages,Tabs,Gallery,Carousel,Logins,Regs,BasicTable }
