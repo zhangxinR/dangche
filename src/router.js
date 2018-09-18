@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import { HashRouter,Route,Switch } from 'react-router-dom';
+import { HashRouter,Route,Switch,Redirect } from 'react-router-dom';
 import App from './App';
 import Admin from './admin';
 import {
@@ -25,6 +25,11 @@ export default class Irouter extends Component{
             <HashRouter>
                 <App>
                     <Switch>
+                        <Route path='/' exact render={
+                            ()=>(
+                                <Redirect to='/admin/home'/>
+                            )
+                        }/>
                         <Route path='/admin' render={()=>(
                             <Admin>
                                 <Switch>
@@ -51,4 +56,5 @@ export default class Irouter extends Component{
             </HashRouter>
         )
     }
+
 }

@@ -3,10 +3,13 @@ import {
     Card,
     Table
 } from 'antd';
+import axios from '../../axios/index';
 
 export default class BasicTable extends Component{
     
-    state={}
+    state={
+        dataSource2:[ ]
+    }
 
     componentDidMount(){
         const dataSource = [
@@ -40,10 +43,11 @@ export default class BasicTable extends Component{
                 address:'北京市海淀区',
                 time:'09:00'
             },
-        ]
+        ];
         this.setState({
             dataSource
-        })
+        });
+        this.request();
     }
 
     render(){
@@ -58,7 +62,14 @@ export default class BasicTable extends Component{
             },
             {
                 title:'性别',
-                dataIndex:'sex'
+                dataIndex:'sex',
+                render(sex){
+                    if(sex==1){
+                        return '女'
+                    }else{
+                        return '男'
+                    }
+                }
             },
             {
                 title:'状态',
@@ -88,9 +99,36 @@ export default class BasicTable extends Component{
                         bordered
                         columns={columns}
                         dataSource={this.state.dataSource}
+                        pagination={false}
+                    />
+                </Card>
+                <Card title='动态数据渲染报告表格' style={{margin:'10px 0'}}>
+                    <Table
+                        bordered
+                        columns={columns}
+                        dataSource={this.state.dataSource2}
+                        pagination={false}
                     />
                 </Card>
             </div>
         )
     }
+
+    //动态获取tablelist数据
+    request=()=>{
+        axios.ajax({
+            url:'/table/list',
+            data:{
+                params:{
+                    page:1
+                }
+            }
+        }).then((res)=>{
+            // console.log(res);
+            this.setState({
+                dataSource2:res.result
+            })
+        })
+    }
+
 }
