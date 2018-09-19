@@ -12,5 +12,22 @@ import Carousel from './ui/carousel';
 import Logins from './form/login';
 import Regs from './form/reg';
 import BasicTable from './table/basic';
+import HighTables from './table/high';
 
-export { Home,Login,Buttons,NoMatch,Modals,Loadings,Notices,Messages,Tabs,Gallery,Carousel,Logins,Regs,BasicTable }
+export { 
+    Home,
+    Login,
+    Buttons,
+    NoMatch,
+    Modals,
+    Loadings,
+    Notices,
+    Messages,
+    Tabs,
+    Gallery,
+    Carousel,
+    Logins,
+    Regs,
+    BasicTable,
+    HighTables 
+}

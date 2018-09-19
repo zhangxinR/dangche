@@ -14,5 +14,20 @@ export default {
         let seconds=date.getSeconds();
         seconds=seconds<10 ? '0'+seconds : seconds;
         return date.getFullYear()+'-'+month+'-'+day+' '+hour+':'+minutes+':'+seconds;
+    },
+    pagination(data,callback){
+        let page={
+            onChange:(current)=>{
+                callback(current)
+            },
+            current:data.page,
+            pageSize:data.page_size,
+            total:data.total,
+            showTotal:()=>{
+                return `共${data.total}条数据`
+            },
+            showQuickJumper:true
+        }
+        return page;
     }
 }

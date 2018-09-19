@@ -16,7 +16,8 @@ import {
     Carousel,
     Logins,
     Regs,
-    BasicTable
+    BasicTable,
+    HighTables
 } from './pages';
 
 export default class Irouter extends Component{
@@ -45,6 +46,7 @@ export default class Irouter extends Component{
                                     <Route path='/admin/form/login' component={ Logins } />
                                     <Route path='/admin/form/reg' component={ Regs } />
                                     <Route path='/admin/table/basic' component={ BasicTable } />
+                                    <Route path='/admin/table/high' component={ HighTables } />
                                     <Route component={ NoMatch }></Route>
                                 </Switch>
                             </Admin>
