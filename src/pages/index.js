@@ -13,6 +13,7 @@ import Logins from './form/login';
 import Regs from './form/reg';
 import BasicTable from './table/basic';
 import HighTables from './table/high';
+import City from './city';
 
 export { 
     Home,
@@ -29,5 +30,6 @@ export {
     Logins,
     Regs,
     BasicTable,
-    HighTables 
+    HighTables ,
+    City
 }
