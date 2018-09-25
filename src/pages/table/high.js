@@ -7,7 +7,6 @@ import {
     message
 } from 'antd';
 import axios from '../../axios/index';
-import Utils from '../../utils/utils';
 
 export default class HighTables extends Component{
     state={
@@ -38,7 +37,7 @@ export default class HighTables extends Component{
                 title:'性别',
                 dataIndex:'sex',
                 render(sex){
-                    if(sex==1){
+                    if(sex===1){
                         return '女'
                     }else{
                         return '男'
@@ -117,7 +116,7 @@ export default class HighTables extends Component{
                 title:'性别',
                 dataIndex:'sex',
                 render(sex){
-                    if(sex==1){
+                    if(sex===1){
                         return '女'
                     }else{
                         return '男'
@@ -231,7 +230,7 @@ export default class HighTables extends Component{
                 title:'性别',
                 dataIndex:'sex',
                 render(sex){
-                    if(sex==1){
+                    if(sex===1){
                         return '女'
                     }else{
                         return '男'
@@ -303,7 +302,7 @@ export default class HighTables extends Component{
                 title:'性别',
                 dataIndex:'sex',
                 render(sex){
-                    if(sex==1){
+                    if(sex===1){
                         return '女'
                     }else{
                         return '男'

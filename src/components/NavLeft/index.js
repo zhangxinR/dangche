@@ -1,17 +1,25 @@
 import React,{ PureComponent } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import MenuConfig from '../../config/menuConfig';
 import { Menu } from 'antd';
 import './index.less';
+import { switchMenu } from '../../redux/action';
+
 
 const SubMenu = Menu.SubMenu;
 
-export default class NavLeft extends PureComponent{
+class NavLeft extends PureComponent{
+
+    state={
+        currentKey:''
+    }
 
     componentWillMount(){
         const menuTreeNode =this.renderMenu(MenuConfig);
-
+        let currentKey=window.location.hash.replace(/#|\?.*$/g,'');
         this.setState({
+            currentKey,
             menuTreeNode
         })
     }
@@ -50,6 +58,9 @@ export default class NavLeft extends PureComponent{
                     <h1>Welcome</h1>
                 </div>
                 <Menu
+                    onClick={this.handleClick}
+                    selectedKeys={this.state.currentKey}
+                    onSelect={(item)=>{console.log(item);this.props.navClick(item.item.props.title)}}
                     theme="dark"
                 >
                     {
@@ -59,4 +70,23 @@ export default class NavLeft extends PureComponent{
             </div>
         );
     }
+
+    handleClick=(item)=>{
+        // console.log(item);
+        this.setState({
+            currentKey:item.key
+        })
+    }
 }
+
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        navClick(item){
+            dispatch(
+                switchMenu(item)
+            )
+        }
+    }
+}
+
+export default connect(null,mapDispatchToProps)(NavLeft);

@@ -1,11 +1,12 @@
 import React,{ PureComponent } from 'react';
 import { Row,Col } from 'antd';
+import { connect } from 'react-redux';
 //实现格式化
 import Utils from '../../utils/utils';
 import './index.less';
 import axios from '../../axios';
 
-export default class Header extends PureComponent{
+class Header extends PureComponent{
     constructor(props){
         super(props);
         this.state={}
@@ -39,12 +40,12 @@ export default class Header extends PureComponent{
                 <Row className='header-top'>
                     <Col span='24'>
                         <span>欢迎，河畔一角</span>
-                        <a href="#">退出</a>
+                        <a href="javascript:;">退出</a>
                     </Col>
                 </Row>
                 <Row className='breadcrumb'>
                     <Col span='4' className='breadcrumb-title'>
-                        首页
+                        {this.props.menuName}
                     </Col>
                     <Col span='20' className='weather'>
                         <span className='date'>{ this.state.systemTime }</span>
@@ -60,3 +61,11 @@ export default class Header extends PureComponent{
         );
     }
 }
+
+const mapStateToProps=(state)=>{
+    return {
+        menuName:state.menuName
+    }
+}
+
+export default connect(mapStateToProps,null)(Header);

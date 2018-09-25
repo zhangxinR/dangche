@@ -53,7 +53,7 @@ export default class BasicTable extends Component{
             },
         ];
         dataSource.map((item,index)=>{
-            item.key=index
+            return item.key=index
         })
         this.setState({
             dataSource

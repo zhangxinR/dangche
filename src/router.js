@@ -23,6 +23,7 @@ import {
 
 export default class Irouter extends Component{
     render() {
+        console.log(Admin);
         return (
             <HashRouter>
                 <App>

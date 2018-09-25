@@ -195,7 +195,7 @@ class Regs extends Component{
                                 getFieldDecorator('rules',)(
                                     <Checkbox>
                                         我已经阅读过
-                                        <a href="#">注册协议</a>
+                                        <a href="javascript:;">注册协议</a>
                                     </Checkbox>
                                 )
                             }
